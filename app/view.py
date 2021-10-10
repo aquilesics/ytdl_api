@@ -11,7 +11,6 @@ from flask import stream_with_context
 import time
 
 
-
 filtro = [
     'categories', 'channel', 'chapters', 'display_id', 'duration', 'extractor', 'webpage_url', 'webpage_url_basename', 'view_count', 'categories',
      'channel', 'chapters', 'display_id', 'duration', 'extractor', 'webpage_url', 'webpage_url_basename', 'view_count', 'title', '_type', 'thumbnail', 'entries'
@@ -46,12 +45,6 @@ def get_info():
     except:
         return 'bad request!', 400
 
-def teste():
-    yield False
-    time.sleep(6)
-    print(" '2 after sleep' ")
-    yield True
-
 
 def process(_req):
     with youtube_dl.YoutubeDL(ydl_opts) as ydl:
@@ -59,16 +52,15 @@ def process(_req):
         print("" + info['title'] + ".mp3")
 
     return info
-        
-    
+           
 
 @app.route('/download')
-def get_download():
-    
+def get_download(): 
     req = request.get_json()
     info = process(req)
         
     return send_from_directory(app.config["CLIENT_SONGS"], path=f'{info["title"]}.mp3', as_attachment=True)
+  
     
 @app.after_request
 def delete_files(Response):
