@@ -16,7 +16,7 @@ def my_hook(d):
 
 ydl_opts = {
     'format': 'bestaudio/best',
-    'outtmpl': './/app//tmp//%(title)s.%(ext)s',
+    'outtmpl': './/app//_tmp//%(title)s.%(ext)s',
     'postprocessors': [{
         'key': 'FFmpegExtractAudio',
         'preferredcodec': 'mp3',
