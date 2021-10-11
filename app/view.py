@@ -62,9 +62,9 @@ def get_download():
     return send_from_directory(app.config["CLIENT_SONGS"], path=f'{info["title"]}.mp3', as_attachment=True)
   
     
-@app.after_request
-def delete_files(Response):
-    p = os.getcwd() + "/app/tmp/"
-    for file in os.listdir(p):
-        os.remove(f"{p}/{file}")
-    return Response
+# @app.after_request
+# def delete_files(Response):
+#     p = os.getcwd() + "/app/tmp/"
+#     for file in os.listdir(p):
+#         os.remove(f"{p}/{file}")
+#     return Response
