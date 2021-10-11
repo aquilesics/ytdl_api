@@ -58,8 +58,9 @@ def process(_req):
 def get_download(): 
     req = request.get_json()
     info = process(req)
+    print("download in -->", os.getcwd())
         
-    return send_from_directory(app.config["CLIENT_SONGS"], path=f'{info["title"]}.mp3', as_attachment=True)
+    return send_from_directory(r"./app/_tmp/", path=f'{info["title"]}.mp3', as_attachment=True)
   
     
 # @app.after_request
