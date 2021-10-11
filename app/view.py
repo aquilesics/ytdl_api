@@ -60,7 +60,7 @@ def get_download():
     info = process(req)
     print("download in -->", os.getcwd())
         
-    return send_from_directory(r"./app/_tmp/", path=f'{info["title"]}.mp3', as_attachment=True)
+    return send_from_directory(r"./_tmp/", path=f'{info["title"]}.mp3', as_attachment=True)
   
     
 # @app.after_request
